@@ -1,0 +1,18 @@
+[
+  {
+    "modid": "${modid}",
+    "name": "TapActions",
+    "description": "TapActions is a mod that adds brand new actions to Housing!",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "ixNoah"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
