@@ -12,6 +12,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinNetHandlerPlayClient {
     @Inject(method = "handleTitle", at = @At("HEAD"), cancellable = true)
     public void handleTitle(S45PacketTitle packetIn, CallbackInfo ci) {
-        new TitleHandler().handleTitle(packetIn, ci);
+        TitleHandler.handleTitle(packetIn, ci);
     }
 }
