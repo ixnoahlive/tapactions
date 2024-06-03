@@ -2,19 +2,15 @@ package live.ixnoah.tapactions.wrappers
 
 import net.minecraft.client.Minecraft
 import net.minecraft.scoreboard.ScoreObjective
-import net.minecraft.scoreboard.Scoreboard
+import net.minecraft.scoreboard.Scoreboard as MCScoreboard
 
-class Scoreboard {
-    fun getScoreboard(): Scoreboard? {
+object Scoreboard {
+    fun getScoreboard(): MCScoreboard? {
         return Minecraft.getMinecraft().theWorld.scoreboard
     }
 
     fun getSidebar(): ScoreObjective? {
         return getScoreboard()?.getObjectiveInDisplaySlot(1)
-    }
-
-    fun getTitle(): String? {
-        return getSidebar()?.displayName
     }
 
     fun setTitle(title: String) {

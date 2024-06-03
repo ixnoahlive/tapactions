@@ -2,9 +2,6 @@ package live.ixnoah.tapactions.actions
 
 import live.ixnoah.tapactions.ActionManager
 import live.ixnoah.tapactions.wrappers.Scoreboard
-import net.minecraft.client.Minecraft
-import net.minecraft.util.ChatComponentText
-import java.util.*
 
 class GeneralActions {
     private val nameRegex = Regex("^[0-9A-z '\"!@#\$%^*?]{0,20}\$")
@@ -14,7 +11,7 @@ class GeneralActions {
         val paramName = params["name"] ?: "Housing"
 
         if (nameRegex.containsMatchIn(paramName)) {
-            Scoreboard().setTitle("§e§l" + paramName.uppercase())
+            Scoreboard.setTitle("§e§l" + paramName.uppercase())
         }
     }
 

@@ -1,12 +1,14 @@
 package live.ixnoah.tapactions
 
 import live.ixnoah.tapactions.actions.GeneralActions
+import live.ixnoah.tapactions.actions.HudActions
 import live.ixnoah.tapactions.commands.CreateCommand
+import live.ixnoah.tapactions.events.WorldLoad
 import net.minecraft.client.Minecraft
 import net.minecraftforge.client.ClientCommandHandler
+import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
-import java.util.logging.LogManager
 
 @Mod(modid = "tapactions", useMetadata = true)
 class TapActions {
@@ -23,12 +25,14 @@ class TapActions {
         } catch (e: java.io.IOException) {
             throw java.lang.RuntimeException(e)
         }
-        println("^_^")
-
-        // Registers
+        // Commands
         ClientCommandHandler.instance.registerCommand(CreateCommand())
+
+        // Events
+        MinecraftForge.EVENT_BUS.register(WorldLoad())
 
         // Deploy actions
         GeneralActions().deploy()
+        HudActions().deploy()
     }
 }
