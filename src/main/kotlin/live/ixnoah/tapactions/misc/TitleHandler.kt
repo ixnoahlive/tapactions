@@ -14,7 +14,7 @@ class TitleHandler {
         ci.cancel()
 
         messageContent = messageContent.replace("␁", "")
-        var components = messageContent.split('␟')
+        var components = messageContent.split('␟').filter { data -> data.isNotEmpty() }
 
         val actionName = components[0] ?: "void"
         components = components.drop(1)
