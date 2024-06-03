@@ -1,6 +1,10 @@
 # TapActions
 A pretty darn modular Housing mod letting creators use custom actions.
 
+> [!CAUTION]
+> Seeing as the mod is not fully stable, action names like `tap:bossbar` are subject to change!
+> Do not use this in production of your house yet!
+
 ## Contributing & Dev Usage
 ### Adding a new action
 ```kt
