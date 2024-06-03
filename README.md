@@ -1,23 +1,25 @@
 # TapActions
-A pretty darn modular Housing mod letting creators use custom actions.
+Hypixel's Housing mode is great for aspiring game designers, builders and developers! Unfortunately, the basic coding systems can be a bit lacking at times in features! Some things such as the sidebar and bossbar can barely or not at all be fully utilised!
+
+**TapActions** lets players experience another layer of interactivity, you get to have an enhanced experience in any supported house you join! Creators using the mod get give the tools to modify and tweak so much more all at the click (or, tap) of a button!
+
+Players can install the mod and experience a better Housing with no wait!
+
+## For Creators
+To use a TapAction, you must add a "Display Title" action in your house. Set the enter, exit and stay to 0 seconds. In the title, edit the text and type out the name and options as `/createaction <name> key=value | ...` 
+
+For a list of all these actions, check the [wiki page](https://github.com/NoahTheNerd/tapactions/wiki)!
 
 > [!CAUTION]
-> Seeing as the mod is not fully stable, action names like `tap:bossbar` are subject to change!
-> Do not use this in production of your house yet!
+> Due to the beta state, we may make drastic changes to how certain actions work.
 
-## Contributing & Dev Usage
-### Adding a new action
-```kt
-val myFunction = { params : MutableMap<String, String> ->
-    // your code here
-}   
+## For Developers
+You can access TapActions source code [here](https://github.com/NoahTheNerd/tapactions). 
 
-// live.ixnoah.tapactions.ActionManager
-ActionManager.registerAction(
-    "mymod:exampleAction",
-    myFunction, 
-    mutableListOf("requiredParam1","requiredParam2") // optional
-// )
+```kotlin
+val myAction = { params: MutableMap<String, String> ->
+    // code here
+}
+
+ActionManager.registerAction("mymod:myaction", myaction)
 ```
-
-Please organise into classes if contributing to master branch. Cheers.
