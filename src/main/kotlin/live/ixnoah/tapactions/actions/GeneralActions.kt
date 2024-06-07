@@ -3,6 +3,12 @@ package live.ixnoah.tapactions.actions
 import CommandQueue
 import live.ixnoah.tapactions.ActionManager
 import live.ixnoah.tapactions.wrappers.Scoreboard
+import net.minecraft.client.Minecraft
+import net.minecraft.event.ClickEvent
+import net.minecraft.event.HoverEvent
+import net.minecraft.util.ChatComponentStyle
+import net.minecraft.util.ChatComponentText
+import net.minecraft.util.ChatStyle
 
 object GeneralActions {
     private val nameRegex = Regex("^[0-9A-z '\"!@#\$%^*?]{0,20}\$")
@@ -32,8 +38,20 @@ object GeneralActions {
         }
     }
 
+    private val actionVisitHouse = { params: MutableMap<String, String> ->
+        Minecraft.getMinecraft().thePlayer.addChatMessage(
+            ChatComponentText("§eThis house wants you to visit §b${params["house"]}§e! Click to visit!")
+                // This is fucking awful but Minecraft devs has forced my hand
+                .setChatStyle(ChatStyle().setChatHoverEvent(
+                    HoverEvent(HoverEvent.Action.SHOW_TEXT, ChatComponentText("§7/visit ${params["player"]} ${params["house"]}"))
+                ).setChatClickEvent(ClickEvent(ClickEvent.Action.RUN_COMMAND, "/visit ${params["player"]} ${params["house"]}"))
+                )
+        )
+    }
+
     fun deploy() {
         ActionManager.registerAction("tap:identity", actionIdentity)
-        ActionManager.registerAction("tap:visibility", actionVisibility)
+        ActionManager.registerAction("tap:visibility", actionVisibility, mutableListOf("max"))
+        ActionManager.registerAction("tap:visit", actionVisitHouse, mutableListOf("player", "house"))
     }
 }

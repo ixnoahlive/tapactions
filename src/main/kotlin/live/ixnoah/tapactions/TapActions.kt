@@ -2,6 +2,7 @@ package live.ixnoah.tapactions
 
 import live.ixnoah.tapactions.actions.GeneralActions
 import live.ixnoah.tapactions.actions.HudActions
+import live.ixnoah.tapactions.actions.WorldActions
 import live.ixnoah.tapactions.commands.CreateActionCommand
 import live.ixnoah.tapactions.events.ClientTick
 import live.ixnoah.tapactions.events.WorldLoad
@@ -35,6 +36,7 @@ class TapActions {
 
         // Deploy actions
         GeneralActions.deploy()
+        WorldActions.deploy()
         HudActions.deploy()
     }
 }
