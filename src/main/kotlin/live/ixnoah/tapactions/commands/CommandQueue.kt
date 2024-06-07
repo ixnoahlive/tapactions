@@ -15,4 +15,8 @@ object CommandQueue {
 
         Minecraft.getMinecraft().thePlayer.sendChatMessage("/" + command)
     }
+
+    fun clearQueue() {
+        queue.clear()
+    }
 }
