@@ -6,11 +6,15 @@ import net.minecraft.command.CommandException
 import net.minecraft.command.ICommandSender
 import net.minecraft.util.ChatComponentText
 
-class CreateCommand: CommandBase() {
+class CreateActionCommand: CommandBase() {
     private val splitter = " | "
 
     override fun getCommandName(): String {
-        return "createaction"
+        return "tap:createaction"
+    }
+
+    override fun getCommandAliases(): MutableList<String> {
+        return mutableListOf("createaction", "ca")
     }
 
     override fun getCommandUsage(sender: ICommandSender?): String {

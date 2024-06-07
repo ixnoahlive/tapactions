@@ -1,7 +1,7 @@
 package live.ixnoah.tapactions.events
 
-import live.ixnoah.tapactions.commands.CommandQueue
-
+import CommandQueue
+import live.ixnoah.tapactions.actions.GeneralActions
 import net.minecraft.client.Minecraft
 import net.minecraft.entity.boss.BossStatus
 import net.minecraftforge.event.entity.EntityJoinWorldEvent
@@ -14,5 +14,6 @@ class WorldLoad {
 
         BossStatus.statusBarTime = 0 // clears the bossbar
         CommandQueue.clearQueue()
+        GeneralActions.hasStatedIdentity = false
     }
 }

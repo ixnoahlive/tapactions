@@ -11,9 +11,13 @@ object CommandQueue {
         if (queue.size == 0) return
         
         val command = queue.first()
-        queue.drop(1)
+        queue = queue.drop(1).toMutableList()
 
-        Minecraft.getMinecraft().thePlayer.sendChatMessage("/" + command)
+        Minecraft.getMinecraft().thePlayer.sendChatMessage("/$command")
+    }
+
+    fun onTick(tick: Int) {
+        if (tick == 1) runNextCommand()
     }
 
     fun clearQueue() {

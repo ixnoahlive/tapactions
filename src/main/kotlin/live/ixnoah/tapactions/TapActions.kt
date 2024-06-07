@@ -2,7 +2,8 @@ package live.ixnoah.tapactions
 
 import live.ixnoah.tapactions.actions.GeneralActions
 import live.ixnoah.tapactions.actions.HudActions
-import live.ixnoah.tapactions.commands.CreateCommand
+import live.ixnoah.tapactions.commands.CreateActionCommand
+import live.ixnoah.tapactions.events.ClientTick
 import live.ixnoah.tapactions.events.WorldLoad
 import net.minecraft.client.Minecraft
 import net.minecraftforge.client.ClientCommandHandler
@@ -26,13 +27,14 @@ class TapActions {
             throw java.lang.RuntimeException(e)
         }
         // Commands
-        ClientCommandHandler.instance.registerCommand(CreateCommand())
+        ClientCommandHandler.instance.registerCommand(CreateActionCommand())
 
         // Events
         MinecraftForge.EVENT_BUS.register(WorldLoad())
+        MinecraftForge.EVENT_BUS.register(ClientTick())
 
         // Deploy actions
-        GeneralActions().deploy()
-        HudActions().deploy()
+        GeneralActions.deploy()
+        HudActions.deploy()
     }
 }

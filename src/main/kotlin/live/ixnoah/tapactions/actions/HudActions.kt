@@ -3,7 +3,7 @@ package live.ixnoah.tapactions.actions
 import live.ixnoah.tapactions.ActionManager
 import net.minecraft.entity.boss.BossStatus
 
-class HudActions {
+object HudActions {
     private val actionBossbar = { params : MutableMap<String, String> ->
         if (params["no-clear"] == null) {
             BossStatus.statusBarTime = Int.MAX_VALUE
