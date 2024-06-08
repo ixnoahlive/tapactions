@@ -15,7 +15,7 @@ object GeneralActions {
     var hasStatedIdentity = false
 
     /** This can be used to show the identity of a house, like name, links & description! */
-    private val actionIdentity = { params : MutableMap<String, String> ->
+    private fun actionIdentity( params : MutableMap<String, String>) {
         if (!hasStatedIdentity) {
             hasStatedIdentity = true
             val paramName = params["name"] ?: "Housing"
@@ -24,21 +24,21 @@ object GeneralActions {
                 Scoreboard.setTitle("§e§l" + paramName.uppercase())
             }
 
-            if (params["run"] !== null) {
+            if (params["run"] != null) {
                 CommandQueue.pushCommand("house:${params["run"]}")
             }
         }
     }
 
-    private val actionVisibility = { params : MutableMap<String, String> ->
+    private fun actionVisibility ( params : MutableMap<String, String> ) {
         val paramVis : Int? = params["max"]?.toIntOrNull()
 
-        if (paramVis !== null) {
+        if (paramVis != null) {
             CommandQueue.pushCommand("visibility $paramVis")
         }
     }
 
-    private val actionVisitHouse = { params: MutableMap<String, String> ->
+    private fun actionVisitHouse( params: MutableMap<String, String> ) {
         Minecraft.getMinecraft().thePlayer.addChatMessage(
             ChatComponentText("§eThis house wants you to visit §b${params["house"]}§e! Click to visit!")
                 // This is fucking awful but Minecraft devs has forced my hand
@@ -50,8 +50,8 @@ object GeneralActions {
     }
 
     fun deploy() {
-        ActionManager.registerAction("tap:identity", actionIdentity)
-        ActionManager.registerAction("tap:visibility", actionVisibility, mutableListOf("max"))
-        ActionManager.registerAction("tap:visit", actionVisitHouse, mutableListOf("player", "house"))
+        ActionManager.registerAction("tap:identity", ::actionIdentity)
+        ActionManager.registerAction("tap:visibility", ::actionVisibility, mutableListOf("max"))
+        ActionManager.registerAction("tap:visit", ::actionVisitHouse, mutableListOf("player", "house"))
     }
 }

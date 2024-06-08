@@ -1,6 +1,7 @@
 package live.ixnoah.tapactions.events
 
 import CommandQueue
+import live.ixnoah.tapactions.actions.WorldActions
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent
 
@@ -13,5 +14,6 @@ class ClientTick {
         tick += 1
 
         CommandQueue.onTick(tick)
+        WorldActions.particlesRendered = 0
     }
 }

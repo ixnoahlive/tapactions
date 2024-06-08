@@ -24,7 +24,7 @@ object ActionManager {
         val definedParams = params?.keys
         val missingParams = mutableListOf<String>()
 
-        if (definedParams !== null && action.paramsRequired?.isNotEmpty() == true) {
+        if (definedParams != null && action.paramsRequired?.isNotEmpty() == true) {
             action.paramsRequired.forEach { paramName ->
                 if (!definedParams.contains(paramName)) missingParams.add(paramName)
             }

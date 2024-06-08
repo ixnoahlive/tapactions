@@ -10,10 +10,11 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 class WorldLoad {
     @SubscribeEvent
     fun onEvent(event: EntityJoinWorldEvent) {
-        if (event.entity !== Minecraft.getMinecraft().thePlayer) return
+        if (event.entity != Minecraft.getMinecraft().thePlayer) return
 
         BossStatus.statusBarTime = 0 // clears the bossbar
         CommandQueue.clearQueue()
         GeneralActions.hasStatedIdentity = false
+
     }
 }

@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo
 
 object TitleHandler {
     fun handleTitle(packetIn: S45PacketTitle, ci: CallbackInfo) {
-        if (packetIn.type.toString() !== "TITLE") return
+        if (packetIn.type.toString() != "TITLE") return
         var messageContent = packetIn.message.unformattedText
         if (!messageContent.startsWith("␁")) return
 
