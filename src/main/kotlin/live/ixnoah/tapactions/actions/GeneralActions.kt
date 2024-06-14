@@ -43,8 +43,8 @@ object GeneralActions {
             ChatComponentText("§eThis house wants you to visit §b${params["house"]}§e! Click to visit!")
                 // This is fucking awful but Minecraft devs has forced my hand
                 .setChatStyle(ChatStyle().setChatHoverEvent(
-                    HoverEvent(HoverEvent.Action.SHOW_TEXT, ChatComponentText("§7/visit ${params["player"]} ${params["house"]}"))
-                ).setChatClickEvent(ClickEvent(ClickEvent.Action.RUN_COMMAND, "/visit ${params["player"]} ${params["house"]}"))
+                    HoverEvent(HoverEvent.Action.SHOW_TEXT, ChatComponentText("§7/visit ${params["owner"]} ${params["house"]}"))
+                ).setChatClickEvent(ClickEvent(ClickEvent.Action.RUN_COMMAND, "/visit ${params["owner"]} ${params["house"]}"))
                 )
         )
     }
@@ -52,6 +52,6 @@ object GeneralActions {
     fun deploy() {
         ActionManager.registerAction("tap:identity", ::actionIdentity)
         ActionManager.registerAction("tap:visibility", ::actionVisibility, mutableListOf("max"))
-        ActionManager.registerAction("tap:visit", ::actionVisitHouse, mutableListOf("player", "house"))
+        ActionManager.registerAction("tap:visit", ::actionVisitHouse, mutableListOf("owner", "house"))
     }
 }

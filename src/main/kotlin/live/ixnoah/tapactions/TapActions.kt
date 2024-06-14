@@ -6,7 +6,6 @@ import live.ixnoah.tapactions.actions.WorldActions
 import live.ixnoah.tapactions.commands.CreateActionCommand
 import live.ixnoah.tapactions.events.ClientTick
 import live.ixnoah.tapactions.events.WorldLoad
-import net.minecraft.client.Minecraft
 import net.minecraftforge.client.ClientCommandHandler
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Mod
@@ -20,13 +19,6 @@ class TapActions {
 
     @Mod.EventHandler
     fun init(event: FMLInitializationEvent) {
-        try {
-            val resource: net.minecraft.client.resources.IResource = Minecraft.getMinecraft().resourceManager
-                .getResource(net.minecraft.util.ResourceLocation("test:test.txt"))
-            org.apache.commons.io.IOUtils.copy(resource.inputStream, java.lang.System.out)
-        } catch (e: java.io.IOException) {
-            throw java.lang.RuntimeException(e)
-        }
         // Commands
         ClientCommandHandler.instance.registerCommand(CreateActionCommand())
 

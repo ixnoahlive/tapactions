@@ -8,9 +8,9 @@ object WorldActions {
     var particlesRendered = 0
     private fun actionParticle(params: MutableMap<String, String>) {
         if (particlesRendered > 100) return
-        if (EnumParticleTypes.entries.none { it.name == params["type"] }) return
+        if (EnumParticleTypes.entries.none { it.name == params["type"]?.uppercase() }) return
 
-        val particleType = EnumParticleTypes.valueOf(params["type"]!!)
+        val particleType = EnumParticleTypes.valueOf(params["type"]!!.uppercase())
 
         val xyz = params["pos"]?.split(" ")?.map { item -> item.toDoubleOrNull() }
         val pos = mutableMapOf(
