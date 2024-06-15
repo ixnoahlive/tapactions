@@ -26,7 +26,7 @@ ActionManager.registerAction("mymod:myaction", myaction)
 
 ## Nightly Releases
 Be warned! These releases contain *bugs*! Make sure to report them on our [issues](https://github.com/NoahTheNerd/tapactions/issues) page!
-* Head to our [GitHub](https://github.com/NoahTheNerd/tapactions)
-* Click on "Actions" on the navigation bar up top
-* Open the latest workflow run (the top one)
-* Scroll down and download `mod-jar.zip`, this contains the `.jar` file of the latest nightly release! Enjoy!
+* Head to our [Workflows](https://github.com/NoahTheNerd/tapactions/actions/workflows/build.yml?query=is%3Acompleted+branch%3Amaster) page
+* Open the top result
+* Scroll down and download `mod-jar.zip`
+* Unzip this to obtain the latest nightly mod jar! These builds are automagically generated and will contain some bugs!
