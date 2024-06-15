@@ -80,10 +80,15 @@ dependencies {
     mappings("de.oceanlabs.mcp:mcp_stable:22-1.8.9")
     forge("net.minecraftforge:forge:1.8.9-11.15.1.2318-1.8.9")
 
+    implementation("com.google.code.gson:gson:2.11.0")
+
     shadowImpl(kotlin("stdlib-jdk8"))
 
     // If you don't want mixins, remove these lines
-    compileOnly("org.spongepowered:mixin:0.7.11-SNAPSHOT")
+    shadowImpl("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
+        isTransitive = false
+    }
+    annotationProcessor("org.spongepowered:mixin:0.8.5-SNAPSHOT")
 
     // If you don't want to log in with your real minecraft account, remove this line
     runtimeOnly("me.djtheredstoner:DevAuth-forge-legacy:1.1.2")
