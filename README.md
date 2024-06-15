@@ -23,3 +23,10 @@ val myAction = { params: MutableMap<String, String> ->
 
 ActionManager.registerAction("mymod:myaction", myaction)
 ```
+
+## Nightly Releases
+Be warned! These releases contain *bugs*! Make sure to report them on our [issues](https://github.com/NoahTheNerd/tapactions/issues) page!
+* Head to our [GitHub](https://github.com/NoahTheNerd/tapactions)
+* Click on "Actions" on the navigation bar up top
+* Open the latest workflow run (the top one)
+* Scroll down and download `mod-jar.zip`, this contains the `.jar` file of the latest nightly release! Enjoy!
