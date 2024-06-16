@@ -26,13 +26,16 @@ object Coordinates {
                         else -> player.posZ + offset
                     }
                 }
-//                TODO: caret notation
 //                part.startsWith("^") -> {
 //                    val offset = part.drop(1).toDoubleOrNull() ?: 0.0
+//
+//                    val pitchAdjusted = Math.toRadians((player.rotationPitch + 90).toDouble())
+//                    val yawAdjusted = Math.toRadians((player.rotationYaw - 90).toDouble())
+//
 //                    coordinates[coordinateKey] = when (coordinateKey) {
-//                        "x" -> player.posX + offset
-//                        "y" -> player.posY + offset
-//                        else -> player.posZ + offset
+//                        "x" -> player.posX + offset * Math.sin(pitchAdjusted) * Math.cos(yawAdjusted)
+//                        "y" -> player.posY + Math.cos(pitchAdjusted)
+//                        else -> player.posZ + Math.sin(pitchAdjusted) * Math.sin(yawAdjusted)
 //                    }
 //                }
                 else -> {
