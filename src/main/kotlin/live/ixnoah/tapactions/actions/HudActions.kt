@@ -50,7 +50,13 @@ object HudActions {
         guiAchievementAcc.tapactions_displayToast(
             params["title"]?.replace(Regex("&(?=[0-9a-fk-o])"), "§") ?: "",
             params["desc"]?.replace(Regex("&(?=[0-9a-fk-o])"), "§") ?: "",
-            ItemStack(Item.getByNameOrId(params["item"] ?: "minecraft:spruce_door"))
+            ItemStack(
+                Item.getByNameOrId(
+                    "minecraft:${params["icon"]?.
+                    replace(Regex("minecraft:(?=(.*))"), "")
+                        ?: "spruce_door"}"
+                )
+            )
         )
     }
 
