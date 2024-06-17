@@ -11,9 +11,11 @@ object WorldActions {
     var particlesRendered = 0
     private fun actionParticle(params: MutableMap<String, String>) {
         if (particlesRendered > 100) return
-        if (EnumParticleTypes.entries.none { it.name == params["type"]?.uppercase() }) return
+        val formattedType = params["type"]!!.uppercase().replace(' ', '_')
 
-        val particleType = EnumParticleTypes.valueOf(params["type"]!!.uppercase())
+        if (EnumParticleTypes.entries.none { it.name == formattedType }) return
+
+        val particleType = EnumParticleTypes.valueOf(formattedType)
 
         var pos = Coordinates.parseCoordinates(params["pos"] ?: "~ ~0.15 ~", Minecraft.getMinecraft().thePlayer)
         if (params["round"] != null) pos = pos.mapValues { (floor(it.value) + 0.5 * it.value.sign) }
