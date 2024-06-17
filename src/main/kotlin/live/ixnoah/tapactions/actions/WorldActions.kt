@@ -5,6 +5,7 @@ import live.ixnoah.tapactions.wrappers.Coordinates
 import net.minecraft.client.Minecraft
 import net.minecraft.util.EnumParticleTypes
 import kotlin.math.floor
+import kotlin.math.sign
 
 object WorldActions {
     var particlesRendered = 0
@@ -14,8 +15,8 @@ object WorldActions {
 
         val particleType = EnumParticleTypes.valueOf(params["type"]!!.uppercase())
 
-        var pos = Coordinates.parseCoordinates(params["pos"]!!, Minecraft.getMinecraft().thePlayer)
-        if (params["round"] != null) pos = pos.mapValues { (floor(it.value) + 0.5) }
+        var pos = Coordinates.parseCoordinates(params["pos"] ?: "~ ~0.15 ~", Minecraft.getMinecraft().thePlayer)
+        if (params["round"] != null) pos = pos.mapValues { (floor(it.value) + 0.5 * it.value.sign) }
 
         Minecraft.getMinecraft().theWorld.spawnParticle(
                 particleType,
@@ -27,6 +28,6 @@ object WorldActions {
     }
 
     fun deploy() {
-        ActionManager.registerAction("tap:particle", ::actionParticle, mutableListOf("type", "pos" ))
+        ActionManager.registerAction("tap:particle", ::actionParticle, mutableListOf("type"))
     }
 }

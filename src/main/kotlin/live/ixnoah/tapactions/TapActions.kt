@@ -22,7 +22,7 @@ import java.net.URL
 class TapActions {
     companion object ModInfo {
         const val MOD_ID = "tapactions"
-        val MOD_VER = Version("0.2.0")
+        val MOD_VER = Version("0.2.1")
 
         var outdated = false
         var newerVersion = MOD_VER
