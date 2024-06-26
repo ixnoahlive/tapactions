@@ -1,12 +1,11 @@
 package live.ixnoah.tapactions.actions
 
 import CommandQueue
-import live.ixnoah.tapactions.ActionManager
+import live.ixnoah.tapactions.core.ActionManager
 import live.ixnoah.tapactions.wrappers.Scoreboard
 import net.minecraft.client.Minecraft
 import net.minecraft.event.ClickEvent
 import net.minecraft.event.HoverEvent
-import net.minecraft.util.ChatComponentStyle
 import net.minecraft.util.ChatComponentText
 import net.minecraft.util.ChatStyle
 

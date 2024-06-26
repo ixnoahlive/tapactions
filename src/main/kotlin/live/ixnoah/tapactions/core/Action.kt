@@ -1,4 +1,4 @@
-package live.ixnoah.tapactions
+package live.ixnoah.tapactions.core
 
 class Action (
     val name: String,

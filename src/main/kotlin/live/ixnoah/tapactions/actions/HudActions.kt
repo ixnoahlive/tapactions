@@ -1,6 +1,6 @@
 package live.ixnoah.tapactions.actions
 
-import live.ixnoah.tapactions.ActionManager
+import live.ixnoah.tapactions.core.ActionManager
 import net.minecraft.entity.boss.BossStatus
 
 object HudActions {

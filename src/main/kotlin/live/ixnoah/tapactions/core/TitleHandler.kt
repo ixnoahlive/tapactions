@@ -1,6 +1,5 @@
-package live.ixnoah.tapactions.misc
+package live.ixnoah.tapactions.core
 
-import live.ixnoah.tapactions.ActionManager
 import net.minecraft.network.play.server.S45PacketTitle
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo
 

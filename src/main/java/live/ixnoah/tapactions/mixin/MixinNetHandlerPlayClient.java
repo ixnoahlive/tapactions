@@ -1,7 +1,7 @@
 package live.ixnoah.tapactions.mixin;
 
 import live.ixnoah.tapactions.actions.HudActions;
-import live.ixnoah.tapactions.misc.TitleHandler;
+import live.ixnoah.tapactions.core.TitleHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.network.play.server.S45PacketTitle;

@@ -1,5 +1,6 @@
-package live.ixnoah.tapactions
+package live.ixnoah.tapactions.core
 
+import live.ixnoah.tapactions.TapActions
 import net.minecraft.client.Minecraft
 import net.minecraft.util.ChatComponentText
 import org.apache.logging.log4j.LogManager
