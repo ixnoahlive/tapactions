@@ -6,9 +6,7 @@ Hypixel's Housing mode is great for aspiring game designers, builders and develo
 Players can install the mod and experience a better Housing with no wait!
 
 ## For Creators
-To use a TapAction, you must add a "Display Title" action in your house. Set the enter, exit and stay to 0 seconds. In the title, edit the text and type out the name and options as `/createaction <name> key=value | ...` 
-
-For a list of all these actions, check the [wiki page](https://github.com/NoahTheNerd/tapactions/wiki)!
+Learn about how to use TapActions in your house on our [updated wiki](https://ixnoah.live/docs/tapactions/)!
 
 > [!CAUTION]
 > Due to the beta state, we may make drastic changes to how certain actions work.

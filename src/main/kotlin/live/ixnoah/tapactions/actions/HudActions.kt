@@ -1,7 +1,15 @@
 package live.ixnoah.tapactions.actions
 
-import live.ixnoah.tapactions.core.ActionManager
+import live.ixnoah.tapactions.ActionManager
+import net.minecraft.client.Minecraft
 import net.minecraft.entity.boss.BossStatus
+import net.minecraft.item.Item
+import net.minecraft.item.ItemStack
+import kotlin.concurrent.thread
+
+interface AccessorGuiAchievement {
+    fun tapactions_displayToast(title: String, desc: String, stack: ItemStack)
+}
 
 object HudActions {
     private fun actionBossbar( params : MutableMap<String, String> ) {
@@ -26,16 +34,35 @@ object HudActions {
         if (params["duration"]?.toFloatOrNull() != null) BossStatus.statusBarTime = ((params["duration"]?.toFloat() ?: 1f) * 60).toInt()
     }
 
-    public var modifyTablist = false
-    public var tablistFooter = "No valid footer found :("
+    var modifyTablist = false
+    var tablistFooter = "No valid footer found :("
     private fun actionTablist( params: MutableMap<String, String> ) {
         modifyTablist = true
-        if (params["restore"] !== null) modifyTablist = false // This will reset it ASAP
+        if (params["restore"] != null) modifyTablist = false // This will reset it ASAP
 
         tablistFooter = params["footer"]!!.replace(Regex("&(?=[0-9a-fk-o])"), "§").replace("\\n", "\n")
     }
 
+    private fun actionToast( params: MutableMap<String, String> ) {
+        val guiAchievement = Minecraft.getMinecraft().guiAchievement
+        val guiAchievementAcc = guiAchievement as AccessorGuiAchievement
+
+        guiAchievementAcc.tapactions_displayToast(
+            params["title"]?.replace(Regex("&(?=[0-9a-fk-o])"), "§") ?: "",
+            params["desc"]?.replace(Regex("&(?=[0-9a-fk-o])"), "§") ?: "",
+            ItemStack(
+                Item.getByNameOrId(
+                    "minecraft:${params["icon"]?.
+                    replace(Regex("minecraft:(?=(.*))"), "")
+                        ?: "spruce_door"}"
+                )
+            )
+        )
+    }
+
     fun deploy() {
+        ActionManager.registerAction("tap:toast", ::actionToast)
+
         ActionManager.registerAction("tap:bossbar", ::actionBossbar)
         ActionManager.registerAction("tap:tablist", ::actionTablist, mutableListOf("footer"))
     }

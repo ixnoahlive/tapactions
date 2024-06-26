@@ -9,6 +9,7 @@ import live.ixnoah.tapactions.actions.WorldActions
 import live.ixnoah.tapactions.commands.CreateActionCommand
 import live.ixnoah.tapactions.events.ClientTick
 import live.ixnoah.tapactions.events.WorldLoad
+import live.ixnoah.tapactions.misc.Version
 import net.minecraftforge.client.ClientCommandHandler
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Mod
@@ -21,14 +22,10 @@ import java.net.URL
 class TapActions {
     companion object ModInfo {
         const val MOD_ID = "tapactions"
-        const val MOD_VER = "0.2.0"
+        val MOD_VER = Version("0.2.1")
 
         var outdated = false
         var newerVersion = MOD_VER
-    }
-
-    private fun versionParser(semver: String): Int {
-        return (semver.replace(Regex("\\D+"), "").toIntOrNull() ?: 0) / 10 // div by 10 to exclude patches
     }
 
     @Mod.EventHandler
@@ -51,14 +48,9 @@ class TapActions {
                 val apiResponse = Gson().fromJson(InputStreamReader(url.openStream()), JsonArray::class.java)
 
                 val latestVersion = apiResponse.get(0) as JsonObject
-                val versionNumber = latestVersion.get("version_number").asString
+                val LATEST_VER = Version(latestVersion.get("version_number").asString)
 
-                if (versionParser(versionNumber) > versionParser(MOD_VER)) {
-                    newerVersion = versionNumber
-                    outdated = true
-                }
-
-
+                if (MOD_VER.lessThan(LATEST_VER)) outdated = true
             } catch (e: Exception) {
                 throw RuntimeException(e)
             }

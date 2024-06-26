@@ -15,14 +15,14 @@ object TitleHandler {
         var components = messageContent.split('␟').filter { data -> data.isNotEmpty() }
 
 
-        val actionName = components[0] ?: "void"
+        val actionName = components.getOrNull(0) ?: "void"
         components = components.drop(1)
 
         val actionParams = mutableMapOf<String, String>()
 
         components.map { paramData ->
-            val keyValue = paramData.replace('=', '␃').split('␃')
-            actionParams[keyValue[0]] = keyValue[1]
+            val keyValue : List<String?> = paramData.replaceFirst('=', '␃').split('␃')
+            actionParams[keyValue.getOrNull(0) ?: "void"] = keyValue.getOrNull(1) ?: "void"
         }
 
         ActionManager.runAction(actionName, actionParams, true)
