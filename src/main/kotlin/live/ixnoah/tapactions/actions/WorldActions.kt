@@ -1,6 +1,6 @@
 package live.ixnoah.tapactions.actions
 
-import live.ixnoah.tapactions.ActionManager
+import live.ixnoah.tapactions.core.ActionManager
 import live.ixnoah.tapactions.wrappers.Coordinates
 import net.minecraft.client.Minecraft
 import net.minecraft.util.EnumParticleTypes

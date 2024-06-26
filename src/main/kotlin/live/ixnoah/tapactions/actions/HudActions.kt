@@ -1,11 +1,10 @@
 package live.ixnoah.tapactions.actions
 
-import live.ixnoah.tapactions.ActionManager
+import live.ixnoah.tapactions.core.ActionManager
 import net.minecraft.client.Minecraft
 import net.minecraft.entity.boss.BossStatus
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
-import kotlin.concurrent.thread
 
 interface AccessorGuiAchievement {
     fun tapactions_displayToast(title: String, desc: String, stack: ItemStack)
