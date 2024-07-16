@@ -30,6 +30,6 @@ data class Version(val version: String) {
     }
 
     fun lessThan(other: Version, depth: Int = 3): Boolean {
-        return this.compareTo(other, depth) > 0
+        return this.compareTo(other, depth) < 0
     }
 }
